@@ -8,12 +8,17 @@
     <title>Library</title>
 </head>
 <body>
-    <div class="title">the Library</div>
+    <div class="logo">
 
-    <button class="new-book" onclick="openForm()">Add a new-book</button>
+        <div class="O">O.</div>
+        <div class="title">the Library</div>
+    </div>
+
+    <button class="new-book" onclick="openForm()">Add book</button>
 
     <div class="pop-up" id="form">
-        <form>
+        <form class="form-content animate">
+            <div class="text">Please! Entrer the informations.</div>
             <div class="formBox">
                 <label for="title">Title</label>
                 <input type="text" id="title"/>
@@ -30,8 +35,9 @@
                 <label for="read">Read or Not</label>
                 <input type="text" id="read"/>
             </div>
-            <div class="formBox">
-                <button id="btn">Add book</button>
+            <div class="formBox bttn">
+                <button id="btn" onclick="document.getElementById('form').style.display='none'">Add book</button>
+                <button id="cl" onclick="document.getElementById('form').style.display='none'">Cancel</button>
             </div>
         </form>
     </div>

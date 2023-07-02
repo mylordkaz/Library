@@ -23,8 +23,8 @@ const addBook = (ev) => {
     let text = ""
     for (let i = 0; i < library.length; i++){
         text += '<div class="book">'
-        text += "Title: " + library[i].title + " ";
-        text += "Author: " + library[i].author + " ";
+        text += "Title: " + library[i].title + " ,";
+        text += "by " + library[i].author + " ,";
         text += "Pages: " + library[i].pages + " ";
         text += "Read: " + library[i].read + " ";
         text += "</div>"
@@ -37,4 +37,12 @@ document.getElementById('btn').addEventListener('click', addBook)
 
 function openForm(){
     document.getElementById('form').style.display = "block"
+}
+
+let form = document.getElementById('form')
+
+window.onclick = function(event){
+    if (event.target == form){
+        form.style.display = "none"
+    }
 }
