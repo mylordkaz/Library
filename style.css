@@ -1,0 +1,7 @@
+.book {
+    border: 1px solid black;
+    border-radius: 30px;
+}
+.pop-up{
+    display: none;
+}
