@@ -33,11 +33,15 @@
             </div>
             <div class="formBox">
                 <label for="read">Read or Not</label>
-                <input type="text" id="read"/>
+                <label class="switch">
+                    <input type="checkbox" id="read">
+                    <span class="slider round"></span>
+                  </label>
+                
             </div>
             <div class="formBox bttn">
                 <button id="btn" onclick="document.getElementById('form').style.display='none'">Add book</button>
-                <button id="cl" onclick="document.getElementById('form').style.display='none'">Cancel</button>
+                <button id="cl">Cancel</button>
             </div>
         </form>
     </div>

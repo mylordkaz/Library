@@ -1,12 +1,3 @@
-
-// function Book (title, author, pages, read){
-    //     this.title = title
-    //     this.author = author
-    //     this.pages = pages
-    //     this.read = read
-    // }
-    
-    
 let library = [];
 
 const addBook = (ev) => {
@@ -15,7 +6,7 @@ const addBook = (ev) => {
         title : document.getElementById('title').value,
         author : document.getElementById('author').value,
         pages : document.getElementById('pages').value,
-        read : document.getElementById('read').value
+        read : document.getElementById('read').checked
     }
     library.push(book)
     document.querySelector('form').reset()
@@ -23,17 +14,17 @@ const addBook = (ev) => {
     let text = ""
     for (let i = 0; i < library.length; i++){
         text += '<div class="book">'
-        text += "Title: " + library[i].title + " ,";
-        text += "by " + library[i].author + " ,";
-        text += "Pages: " + library[i].pages + " ";
-        text += "Read: " + library[i].read + " ";
+        text += "<span> Title: </span>" + library[i].title + " ";
+        text += "<span> by </span> " + library[i].author + ". ";
+        text += "<span> Pages: </span>" + library[i].pages + " ";
+        text += "<span> Read: </span><input type='checkbox'" + (library[i].read ? "checked" : "") + "> ";
+        text += '<button class="remove-button" data-index="' + i + '">Remove</button>';
         text += "</div>"
         text += "<br>";
     }
     
     document.getElementById('display').innerHTML = text
 }
-document.getElementById('btn').addEventListener('click', addBook)
 
 function openForm(){
     document.getElementById('form').style.display = "block"
@@ -46,3 +37,23 @@ window.onclick = function(event){
         form.style.display = "none"
     }
 }
+
+let cancel = document.getElementById('cl')
+
+cancel.onclick = function(event){
+    if (event.target == form){
+        form.style.display = "none"
+    }
+}
+
+let removeButton = document.getElementsByClassName('remove-button')
+for (let i = 0; i < removeButton.length; i++){
+    removeButton[i].addEventListener('click', removeBook)
+}
+
+const removeBook  =(ev) => {
+    let index = ev.target.getAttriute('data-index')
+    library.splice(index, 1)
+    addBook(ev)
+}
+document.getElementById('btn').addEventListener('click', addBook)
