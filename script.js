@@ -24,8 +24,10 @@ function displayLibrary (){
         text += "<span> Title: </span>" + library[i].title + " ";
         text += "<span> by </span> " + library[i].author + " ";
         text += "<span> Pages: </span>" + library[i].pages + " ";
-        text += "<span> Read: </span><input type='checkbox'" + (library[i].read ? "checked" : "") + "> ";
-        text += '<button class="remove-button" data-index="' + i + '">Remove</button>';
+        text += "<span> Read: </span><label class= check><input type='checkbox'" +
+                 (library[i].read ? "checked" : "") +
+                  "><span class='checkmark'></span></label> ";
+        text += '<button class="remove-button" data-index="' + i + '"><i class="fa fa-trash"></i></button>';
         text += "</div>"
         text += "<br>";
     }
@@ -60,7 +62,7 @@ cancel.onclick = function(event){
 const removeBook  =(ev) => {
     let index = ev.target.getAttribute('data-index')
     library.splice(index, 1)
-    
+
     displayLibrary();
 }
 
