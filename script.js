@@ -22,8 +22,14 @@ const addBook = (ev) => {
         text += "</div>"
         text += "<br>";
     }
-    
+
     document.getElementById('display').innerHTML = text
+
+    let removeButton = document.getElementsByClassName('remove-button');
+    for (let i = 0; i < removeButton.length; i++) {
+        removeButton[i].addEventListener('click', removeBook);
+    }
+    
 }
 
 function openForm(){
@@ -46,13 +52,8 @@ cancel.onclick = function(event){
     }
 }
 
-let removeButton = document.getElementsByClassName('remove-button')
-for (let i = 0; i < removeButton.length; i++){
-    removeButton[i].addEventListener('click', removeBook)
-}
-
 const removeBook  =(ev) => {
-    let index = ev.target.getAttriute('data-index')
+    let index = ev.target.getAttribute('data-index')
     library.splice(index, 1)
     addBook(ev)
 }
