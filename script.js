@@ -1,6 +1,7 @@
 let library = [];
 
 const addBook = (ev) => {
+
     ev.preventDefault();
     let book = {
         title : document.getElementById('title').value,
@@ -10,26 +11,30 @@ const addBook = (ev) => {
     }
     library.push(book)
     document.querySelector('form').reset()
+
+    displayLibrary()
+
+}
+
+function displayLibrary (){ 
     
-    let text = ""
+    let text = "";
     for (let i = 0; i < library.length; i++){
         text += '<div class="book">'
         text += "<span> Title: </span>" + library[i].title + " ";
-        text += "<span> by </span> " + library[i].author + ". ";
+        text += "<span> by </span> " + library[i].author + " ";
         text += "<span> Pages: </span>" + library[i].pages + " ";
         text += "<span> Read: </span><input type='checkbox'" + (library[i].read ? "checked" : "") + "> ";
         text += '<button class="remove-button" data-index="' + i + '">Remove</button>';
         text += "</div>"
         text += "<br>";
     }
-
     document.getElementById('display').innerHTML = text
 
     let removeButton = document.getElementsByClassName('remove-button');
     for (let i = 0; i < removeButton.length; i++) {
         removeButton[i].addEventListener('click', removeBook);
     }
-    
 }
 
 function openForm(){
@@ -55,6 +60,8 @@ cancel.onclick = function(event){
 const removeBook  =(ev) => {
     let index = ev.target.getAttribute('data-index')
     library.splice(index, 1)
-    addBook(ev)
+    
+    displayLibrary();
 }
-document.getElementById('btn').addEventListener('click', addBook)
+
+document.getElementById('btn').addEventListener('click', addBook);
