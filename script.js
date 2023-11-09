@@ -1,8 +1,15 @@
 let library = [];
 
-const addBook = (ev) => {
+const addBook = (e) => {
 
-    ev.preventDefault();
+    e.preventDefault();
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+
+    if (title.trim() === '' || author.trim() === '') {
+        alert("Please fill out both Title and Author fields.");
+        return;
+    }
     let book = {
         title : document.getElementById('title').value,
         author : document.getElementById('author').value,
@@ -11,7 +18,7 @@ const addBook = (ev) => {
     }
     library.push(book)
     document.querySelector('form').reset()
-
+    document.getElementById('form').style.display='none'
     displayLibrary()
 
 }
@@ -67,3 +74,11 @@ const removeBook  =(ev) => {
 }
 
 document.getElementById('btn').addEventListener('click', addBook);
+
+function valid() {
+    const title = document.getElementById("title");
+    if (!title.checkValidity()) {
+      document.getElementById("error").innerHTML = title.validationMessage;
+    }
+  }
+  
